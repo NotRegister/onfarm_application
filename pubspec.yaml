@@ -1,0 +1,28 @@
+name: kkw_application
+description: "An application for Kepala Kebun Wilayah."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.2.6 <4.0.0'
+
+dependencies:
+  dotted_border: ^2.1.0
+  fl_chart: ^0.66.2
+  flutter:
+    sdk: flutter
+  form_field_validator: ^1.1.0
+  google_fonts: ^6.1.0
+  percent_indicator: ^4.2.3
+
+dev_dependencies:
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/logo/
