@@ -13,4 +13,6 @@ class ListColor {
   static const Color lightGrayColor = Color.fromRGBO(199, 199, 199, 1);
   static const Color blueColor = Color.fromRGBO(71, 165, 222, 1);
   static const Color blackColor = Color.fromRGBO(0, 0, 0, 1);
+  static const Color purpleColor = Color.fromRGBO(184, 88, 184, 1);
+
 }

@@ -410,7 +410,7 @@ class _HelpOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 200,
+      width: 350,
       child: Card(
         margin: EdgeInsets.zero,
         surfaceTintColor: Colors.white,
@@ -422,16 +422,13 @@ class _HelpOverlay extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 10, top: 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Need help?',
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontFamily: 'Helvetica',
-                          fontWeight: FontWeight.w700,
-                        ),
+                    'Pengertian warna Nomor SPTA',
+                    style: GoogleFonts.poppins(fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   IconButton(
                     onPressed: hide,
@@ -441,14 +438,143 @@ class _HelpOverlay extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
-              child: Text(
-                'We are here to help you. Please contact us via email or phone.',
-                style: GoogleFonts.poppins(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.grey[700],
-                ),
+              padding: const EdgeInsets.only(top: 10,left: 10, right: 10, bottom: 10),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: ListColor.primaryColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Belum sampai',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ListColor.grayColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(
+                        thickness: 3,
+                        color: ListColor.lightGrayColor,
+                      ),
+                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: ListColor.errorColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Gagal berangkat',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ListColor.grayColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(
+                        thickness: 3,
+                        color: ListColor.lightGrayColor,
+                      ),
+                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: ListColor.blueColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Sedang timbang',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ListColor.grayColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(
+                        thickness: 3,
+                        color: ListColor.lightGrayColor,
+                      ),
+                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: ListColor.purpleColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Sudah timbang',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ListColor.grayColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(top: 5, bottom: 5),
+                      child: Divider(
+                        thickness: 3,
+                        color: ListColor.lightGrayColor,
+                      ),
+                    ),
+                  Row(
+                    children: [
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: ListColor.successColor,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Menghasilkan gula',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: ListColor.grayColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
