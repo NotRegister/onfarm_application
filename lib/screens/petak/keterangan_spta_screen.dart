@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kkw_application/screens/petak/keterangan_petak_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
+import 'package:kkw_application/widgets/popup.dart';
 
 class KeteranganSptaScreen extends StatefulWidget {
   const KeteranganSptaScreen({super.key});
@@ -11,6 +12,14 @@ class KeteranganSptaScreen extends StatefulWidget {
 }
 
 class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
+  late final OverlayPortalController _infoPopupController;
+
+  @override
+  void initState() {
+    super.initState();
+    _infoPopupController = OverlayPortalController();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -62,6 +71,32 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                 const SizedBox(
                   height: 20,
                 ),
+                Text(
+                  'C23241 / AFD05',
+                  style: GoogleFonts.poppins(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600,
+                      color: ListColor.primaryColor),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Daftar Nomor SPTA',
+                      style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: ListColor.secondaryColor),
+                    ),
+                    _informationButton(controller: _infoPopupController)
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
                 Card(
                   color: ListColor.successColor,
                   child: ClipRRect(
@@ -86,7 +121,7 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                                 Text(
                                   'Nomor SPTA 1',
                                   style: GoogleFonts.poppins(
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                       color: ListColor.whiteColor),
                                 ),
@@ -108,7 +143,7 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                                 Text(
                                   'N 1080 B',
                                   style: GoogleFonts.poppins(
-                                      fontSize: 16,
+                                      fontSize: 15,
                                       fontWeight: FontWeight.w600,
                                       color: ListColor.whiteColor),
                                 ),
@@ -235,6 +270,44 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
+                                    Text('Sharing Tetes',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Text('89,71 Kg',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ))
+                                  ],
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  color: ListColor.lightGrayColor,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text('Mutu Tebu',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                                    Text('B',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ))
+                                  ],
+                                ),
+                                const Divider(
+                                  thickness: 2,
+                                  color: ListColor.lightGrayColor,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
                                     Text('Biaya Tebang',
                                         style: GoogleFonts.poppins(
                                           fontSize: 16,
@@ -296,6 +369,89 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _informationButton extends StatelessWidget {
+  const _informationButton({required this.controller});
+  final OverlayPortalController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Popup(
+      follower: _HelpOverlay(controller.hide),
+      followerAnchor: Alignment.topRight,
+      targetAnchor: Alignment.topRight,
+      controller: controller,
+      child: TextButton(
+        onPressed: controller.show,
+        child: const Row(
+          children: [
+            Icon(
+              Icons.help_rounded,
+              color: ListColor.secondaryColor,
+              size: 25,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _HelpOverlay extends StatelessWidget {
+  const _HelpOverlay(this.hide);
+
+  final VoidCallback hide;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 200,
+      child: Card(
+        margin: EdgeInsets.zero,
+        surfaceTintColor: Colors.white,
+        elevation: 4,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(16)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Need help?',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontFamily: 'Helvetica',
+                          fontWeight: FontWeight.w700,
+                        ),
+                  ),
+                  IconButton(
+                    onPressed: hide,
+                    icon: const Icon(Icons.cancel),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+              child: Text(
+                'We are here to help you. Please contact us via email or phone.',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.grey[700],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
