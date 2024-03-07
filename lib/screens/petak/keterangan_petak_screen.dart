@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:kkw_application/screens/petak/keterangan_anggaran_screen.dart';
 import 'package:kkw_application/screens/petak/keterangan_spta_screen.dart';
 import 'package:kkw_application/screens/petak/petak_screen.dart';
+import 'package:kkw_application/screens/tabbar_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 import 'package:kkw_application/widgets/indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -38,7 +39,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                           onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const PetakScreen())),
+                                  builder: (context) => const TabBarScreen())),
                           child: Container(
                               padding: const EdgeInsets.all(8),
                               child: const Icon(Icons.arrow_back_ios_new)),
@@ -57,7 +58,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     Text(
                       'Keterangan Petak',
                       style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: ListColor.secondaryColor),
                     ),
@@ -315,7 +316,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                         Text(
                           'Anggaran',
                           style: GoogleFonts.poppins(
-                              fontSize: 16,
+                              fontSize: 18,
                               fontWeight: FontWeight.w600,
                               color: ListColor.secondaryColor),
                         ),
@@ -527,7 +528,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     Text(
                       'Belum Terbayar',
                       style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: ListColor.secondaryColor),
                     ),
@@ -631,7 +632,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     Text(
                       'Biaya Tebang Muat Angkut',
                       style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: ListColor.secondaryColor),
                     ),
@@ -706,7 +707,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     Text(
                       'Produksi',
                       style: GoogleFonts.poppins(
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: ListColor.secondaryColor),
                     ),
@@ -875,10 +876,9 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                           ),
                           ElevatedButton(
                             onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const KeteranganSptaScreen())),
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const KeteranganSptaScreen())),
                             style: ElevatedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
@@ -896,9 +896,58 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                         ],
                       ),
                     ),
+                    //* bar chart
                     const SizedBox(
                       height: 15,
                     ),
+                    //! Bar Chart
+                    Container(
+                        padding: const EdgeInsets.only(
+                            top: 20, left: 20, right: 20, bottom: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(9),
+                          color: ListColor.whiteColor,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'Tahun tanam',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.primaryColor),
+                                ),
+                                Text(
+                                  '2023 / 2024',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.secondaryColor),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            AspectRatio(aspectRatio: 1.6 ,child: const _BarChartSpta()),
+                          ],
+                        )),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      'PG Penerima',
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: ListColor.secondaryColor),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    //* piechart
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -906,7 +955,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                         color: ListColor.whiteColor,
                       ),
                       child: AspectRatio(
-                        aspectRatio: 1.3,
+                        aspectRatio: 1.5,
                         child: Row(
                           children: [
                             Expanded(
@@ -1092,7 +1141,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 60.0 : 50.0;
-      const shadows = [Shadow(color: Colors.black, blurRadius: 0)];
+      const shadows = [Shadow(color: ListColor.blackColor, blurRadius: 0)];
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -1139,4 +1188,200 @@ class _ScreenState extends State<KeteranganPetakScreen> {
       }
     });
   }
+}
+
+class _BarChartSpta extends StatelessWidget {
+  const _BarChartSpta({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BarChart(
+      BarChartData(
+        barTouchData: barTouchData,
+        titlesData: titlesData,
+        borderData: borderData,
+        barGroups: barGroups,
+        gridData: const FlGridData(show: false),
+        alignment: BarChartAlignment.spaceAround,
+        maxY: 20,
+      ),
+    );
+  }
+
+  BarTouchData get barTouchData => BarTouchData(
+        enabled: false,
+        touchTooltipData: BarTouchTooltipData(
+          tooltipBgColor: Colors.transparent,
+          tooltipPadding: EdgeInsets.zero,
+          tooltipMargin: 8,
+          getTooltipItem: (
+            BarChartGroupData group,
+            int groupIndex,
+            BarChartRodData rod,
+            int rodIndex,
+          ) {
+            return BarTooltipItem(
+              '${rod.toY.round()} SPTA',
+              //* judul atas bar
+              const TextStyle(
+                color: ListColor.successColor,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget getTitles(double value, TitleMeta meta) {
+    //* tanggal bar bawah
+    const style = TextStyle(
+      color: ListColor.primaryColor,
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    );
+    String text;
+    switch (value.toInt()) {
+      case 0:
+        text = '1';
+        break;
+      case 1:
+        text = '4';
+        break;
+      case 2:
+        text = '8';
+        break;
+      case 3:
+        text = '12';
+        break;
+      case 4:
+        text = '16';
+        break;
+      case 5:
+        text = '20';
+        break;
+      case 6:
+        text = '24';
+        break;
+      case 7:
+        text = '28';
+        break;
+      case 8:
+        text = '31';
+        break;
+      default:
+        text = '';
+        break;
+    }
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 4,
+      child: Text(text, style: style),
+    );
+  }
+
+  FlTitlesData get titlesData => FlTitlesData(
+        show: true,
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 30,
+            getTitlesWidget: getTitles,
+          ),
+        ),
+        leftTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        rightTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+      );
+
+  FlBorderData get borderData => FlBorderData(
+        show: false,
+      );
+
+  LinearGradient get _barsGradient => const LinearGradient(
+        colors: [
+          ListColor.primaryColor,
+          ListColor.successColor,
+        ],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+      );
+
+  List<BarChartGroupData> get barGroups => [
+        BarChartGroupData(
+          x: 0,
+          barRods: [
+            BarChartRodData(
+              toY: 8,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 1,
+          barRods: [
+            BarChartRodData(
+              toY: 10,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 2,
+          barRods: [
+            BarChartRodData(
+              toY: 14,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 3,
+          barRods: [
+            BarChartRodData(
+              toY: 15,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 4,
+          barRods: [
+            BarChartRodData(
+              toY: 13,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 5,
+          barRods: [
+            BarChartRodData(
+              toY: 10,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 6,
+          barRods: [
+            BarChartRodData(
+              toY: 16,
+              gradient: _barsGradient,
+            )
+          ],
+          showingTooltipIndicators: [0],
+        ),
+      ];
 }

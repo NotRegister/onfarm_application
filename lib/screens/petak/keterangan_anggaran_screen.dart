@@ -24,28 +24,32 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
               headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
                   SliverAppBar(
-                    title: Row(
+                    title: Column(
                       children: [
-                        InkWell(
-                          borderRadius: BorderRadius.circular(10),
-                          onTap: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const KeteranganPetakScreen())),
-                          child: Container(
-                              padding: const EdgeInsets.all(8),
-                              child: const Icon(Icons.arrow_back_ios_new)),
+                        Row(
+                          children: [
+                            InkWell(
+                              borderRadius: BorderRadius.circular(10),
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const KeteranganPetakScreen())),
+                              child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  child: const Icon(Icons.arrow_back_ios_new)),
+                            ),
+                            const SizedBox(width: 30),
+                            Text(
+                              'C23241 / AFD05',
+                              style: GoogleFonts.poppins(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: ListColor.primaryColor),
+                            ), 
+                          ],
                         ),
-                        const SizedBox(width: 30),
-                        Text(
-                          'C23241 / AFD05',
-                          style: GoogleFonts.poppins(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700,
-                              color: ListColor.primaryColor),
-                        )
                       ],
-                    ),
+                    ), 
                     pinned: true,
                     floating: true,
                     bottom: TabBar(
@@ -120,7 +124,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -164,11 +168,11 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -257,7 +261,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -305,7 +309,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -353,7 +357,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -442,7 +446,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -490,7 +494,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),
@@ -538,7 +542,7 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                               height: 15,
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   color: ListColor.whiteColor),

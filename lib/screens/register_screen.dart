@@ -2,6 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kkw_application/screens/home_screen.dart';
+import 'package:kkw_application/screens/register_berhasil_screen.dart';
 import 'package:kkw_application/screens/tabbar_screen.dart';
 import 'package:kkw_application/screens/login_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
@@ -129,7 +130,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const HomeScreen()));
+                                        builder: (context) => const RegisterBerhasilScreen()));
                                 print('validated');
                               } else {
                                 print('not validated');
