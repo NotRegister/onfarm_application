@@ -123,7 +123,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      '3,913',
+                                      '3,913 Hektar',
                                       style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -190,7 +190,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      'Tebu',
+                                      'Tebu-BL',
                                       style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
@@ -222,7 +222,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                     ),
                                     const SizedBox(height: 5),
                                     Text(
-                                      'TS-HG',
+                                      'TS-HG-PC',
                                       style: GoogleFonts.poppins(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600,
