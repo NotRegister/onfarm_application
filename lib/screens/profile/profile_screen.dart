@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:kkw_application/screens/profile/account_setting_screen.dart';
 import 'package:kkw_application/screens/tabbar_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 import 'package:kkw_application/widgets/pengaturan_profile_button.dart';
@@ -24,7 +25,10 @@ class ProfileScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       onTap: () {
                         //Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const TabBarScreen()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TabBarScreen()));
                       },
                       child: Container(
                         padding: const EdgeInsets.all(10),
@@ -73,23 +77,43 @@ class ProfileScreen extends StatelessWidget {
                           color: ListColor.secondaryColor),
                     ),
                     const SizedBox(height: 10),
-                    const Row(
+                    Row(
                       children: [
-                        PengaturanProfileButton(icon: Icons.manage_accounts_rounded, label: 'Akun',),
-                        SizedBox(
+                        PengaturanProfileButton(
+                          icon: Icons.manage_accounts_rounded,
+                          label: 'Akun',
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const AccountSettingScreen()));
+                          },
+                        ),
+                        const SizedBox(
                           width: 12,
                         ),
-                        PengaturanProfileButton(icon: Icons.manage_search_rounded, label: 'FAQs',),
+                        const PengaturanProfileButton(
+                          icon: Icons.manage_search_rounded,
+                          label: 'FAQs',
+                        ),
                       ],
                     ),
-                    const SizedBox(height: 10,),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const Row(
                       children: [
-                        PengaturanProfileButton(icon: Icons.book, label: 'Petunjuk User',),
+                        PengaturanProfileButton(
+                          icon: Icons.book,
+                          label: 'Petunjuk User',
+                        ),
                         SizedBox(
                           width: 12,
                         ),
-                        PengaturanProfileButton(icon: Icons.manage_search_rounded, label: 'FAQs',),
+                        PengaturanProfileButton(
+                          icon: Icons.manage_search_rounded,
+                          label: 'FAQs',
+                        ),
                       ],
                     ),
                   ],
@@ -102,5 +126,3 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-

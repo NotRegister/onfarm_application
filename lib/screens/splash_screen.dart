@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kkw_application/screens/login_screen.dart';
+import 'package:kkw_application/screens/profile/profile_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Future.delayed(const Duration(seconds: 2), () {
       // Navigator.pushReplacementNamed(context, '/login');
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
+          .push(MaterialPageRoute(builder: (context) => const ProfileScreen()));
     });
   }
 

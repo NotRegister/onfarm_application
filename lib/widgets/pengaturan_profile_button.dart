@@ -16,7 +16,7 @@ class PengaturanProfileButton extends StatelessWidget {
     return Expanded(
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
-        onTap: (){},
+        onTap: onTap as void Function()?,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 30),
           decoration: BoxDecoration(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kkw_application/screens/login_screen.dart';
+import 'package:kkw_application/screens/profile/profile_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
-class RegisterBerhasilScreen extends StatelessWidget {
-  const RegisterBerhasilScreen({super.key});
+class ChangePasswordBerhasilScreen extends StatelessWidget {
+  const ChangePasswordBerhasilScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +18,11 @@ class RegisterBerhasilScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/images/illustration_success_account.png'),
+              Image.asset('assets/images/illustration_success_change_password.png'),
               const SizedBox(height: 35),
               Text(
-                'Berhasil Membuat Akun',
+                'Berhasil merubah password',
+                textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   color: ListColor.secondaryColor,
                   fontWeight: FontWeight.w400,
@@ -29,7 +31,7 @@ class RegisterBerhasilScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                'Silahkan periksa email anda untuk mendapatkan password. Periksa folder spam jika tidak menerima email',
+                'Selamat! Kata sandi Anda telah berhasil diperbarui. Anda sekarang dapat menggunakan kata sandi baru untuk masuk ke akun Anda.',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                   color: ListColor.blackColor,
@@ -46,7 +48,7 @@ class RegisterBerhasilScreen extends StatelessWidget {
                         Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const LoginScreen()));
+                                        builder: (context) => const ProfileScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ListColor.primaryColor,

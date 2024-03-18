@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kkw_application/screens/profile_screen.dart';
+import 'package:kkw_application/screens/profile/profile_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
 class HomeScreen extends StatefulWidget {
