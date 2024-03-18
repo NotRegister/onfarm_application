@@ -545,7 +545,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                         alignment: Alignment.centerLeft,
                         children: [
                           Positioned(
-                            left: 30,
+                            left: 20,
                             child: Text(
                               "20%",
                               style: GoogleFonts.poppins(color: ListColor.whiteColor),
