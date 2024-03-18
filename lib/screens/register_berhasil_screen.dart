@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kkw_application/screens/home_screen.dart';
-import 'package:kkw_application/screens/tabbar_screen.dart';
+import 'package:kkw_application/screens/login_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
 class RegisterBerhasilScreen extends StatelessWidget {
@@ -11,7 +10,7 @@ class RegisterBerhasilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ListColor.brokenWhiteColor,
+        backgroundColor: ListColor.whiteColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 27.0+30, vertical: 20),
           child: Column(
@@ -47,11 +46,11 @@ class RegisterBerhasilScreen extends StatelessWidget {
                         Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const TabBarScreen()));
+                                        builder: (context) => const LoginScreen()));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ListColor.primaryColor,
-                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 25),
+                        padding: const EdgeInsets.symmetric( vertical: 20),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

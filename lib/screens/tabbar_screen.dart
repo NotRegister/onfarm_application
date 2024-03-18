@@ -31,24 +31,26 @@ class _TabBarScreenState extends State<TabBarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedTab,
-        selectedItemColor: ListColor.primaryColor,
-        unselectedItemColor: ListColor.lightGrayColor,
-        unselectedLabelStyle: GoogleFonts.poppins(),
-        onTap: (index) => _changeTab(index),
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Petak'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.assessment /* bar_chart */), label: 'Statistik')
-        ],
-      ),
-      body: IndexedStack(
-        index: _selectedTab,
-        children: _pageList,
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedTab,
+          selectedItemColor: ListColor.primaryColor,
+          unselectedItemColor: ListColor.lightGrayColor,
+          unselectedLabelStyle: GoogleFonts.poppins(),
+          onTap: (index) => _changeTab(index),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.assignment), label: 'Petak'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.assessment /* bar_chart */), label: 'Statistik')
+          ],
+        ),
+        body: IndexedStack(
+          index: _selectedTab,
+          children: _pageList,
+        ),
       ),
     );
   }

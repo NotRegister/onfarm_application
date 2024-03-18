@@ -360,6 +360,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     const SizedBox(height: 15),
                     Row(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Container(
@@ -437,6 +438,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                       child: AspectRatio(
                         aspectRatio: 1.3,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Expanded(
                               child: AspectRatio(
@@ -462,14 +464,14 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                       show: false,
                                     ),
                                     sectionsSpace: 3,
-                                    centerSpaceRadius: 40,
+                                    centerSpaceRadius: 10,
                                     sections: _listPieAnggaran(),
                                   ),
                                 ),
                               ),
                             ),
                             const SizedBox(
-                              width: 50,
+                              width: 20,
                             ),
                             const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -558,6 +560,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     const SizedBox(height: 15),
                     Row(
                       mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
                           child: Container(
@@ -949,18 +952,19 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                     ),
                     //* piechart
                     Container(
-                      padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(9),
                         color: ListColor.whiteColor,
                       ),
                       child: AspectRatio(
-                        aspectRatio: 1.5,
+                        aspectRatio: 1.4,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Expanded(
                               child: AspectRatio(
-                                aspectRatio: 1,
+                                aspectRatio: 0.2,
                                 child: PieChart(
                                   PieChartData(
                                     pieTouchData: PieTouchData(
@@ -982,14 +986,14 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                       show: false,
                                     ),
                                     sectionsSpace: 3,
-                                    centerSpaceRadius: 40,
+                                    centerSpaceRadius: 10,
                                     sections: _listPieSpta(),
                                   ),
                                 ),
                               ),
                             ),
                             const SizedBox(
-                              width: 50,
+                              width: 15,
                             ),
                             const Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -1036,7 +1040,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
     return List.generate(7, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final radius = isTouched ? 75.0 : 70.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 0)];
       switch (i) {
         case 0:
@@ -1140,7 +1144,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
     return List.generate(3, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final radius = isTouched ? 60.0 : 55.0;
       const shadows = [Shadow(color: ListColor.blackColor, blurRadius: 0)];
       switch (i) {
         case 0:
@@ -1223,10 +1227,14 @@ class _BarChartSpta extends StatelessWidget {
             return BarTooltipItem(
               '${rod.toY.round()} SPTA',
               //* judul atas bar
-              const TextStyle(
+              GoogleFonts.poppins(
+                color: ListColor.successColor,
+                fontWeight: FontWeight.w700,
+                fontSize: 12
+              )/* TextStyle(
                 color: ListColor.successColor,
                 fontWeight: FontWeight.bold,
-              ),
+              ), */
             );
           },
         ),
@@ -1242,31 +1250,31 @@ class _BarChartSpta extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = '1';
+        text = '1/3';
         break;
       case 1:
-        text = '4';
+        text = '4/3';
         break;
       case 2:
-        text = '8';
+        text = '8/3';
         break;
       case 3:
-        text = '12';
+        text = '12/3';
         break;
       case 4:
-        text = '16';
+        text = '16/3';
         break;
       case 5:
-        text = '20';
+        text = '20/3';
         break;
       case 6:
-        text = '24';
+        text = '24/3';
         break;
       case 7:
-        text = '28';
+        text = '28/3';
         break;
       case 8:
-        text = '31';
+        text = '31/3';
         break;
       default:
         text = '';

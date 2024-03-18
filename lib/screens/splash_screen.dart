@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kkw_application/screens/login_screen.dart';
-import 'package:kkw_application/screens/petak/keterangan_anggaran_screen.dart';
-import 'package:kkw_application/screens/petak/keterangan_petak_screen.dart';
-import 'package:kkw_application/screens/petak/keterangan_spta_screen.dart';
-import 'package:kkw_application/screens/register_berhasil_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,12 +14,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
 
     Future.delayed(const Duration(seconds: 2), () {
       // Navigator.pushReplacementNamed(context, '/login');
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const KeteranganSptaScreen()));
+          .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
     });
   }
 
@@ -43,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
         ),
         alignment: Alignment.center,
         width: double.infinity,
-        child: Image.asset('assets/logo/PTPN1_SIKKW.png'),
+        child: Image.asset('assets/logo/PTPN1_SIKKW.png', width: 200, height: 200, fit: BoxFit.fill,),
       ),
     );
   }

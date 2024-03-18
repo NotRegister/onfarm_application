@@ -102,7 +102,7 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                 const CardSpta(bgCardColor: ListColor.purpleColor,),
                 const CardSpta(bgCardColor: ListColor.blueColor,),
                 const CardSpta(bgCardColor: ListColor.primaryColor,),
-                const CardSpta(bgCardColor: ListColor.errorColor,),
+                const CardSptaGagal(),
               ],
             ),
           ),
@@ -149,7 +149,7 @@ class _HelpOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 350,
+      width: 340,
       child: Card(
         margin: EdgeInsets.zero,
         surfaceTintColor: Colors.white,

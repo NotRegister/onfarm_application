@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:kkw_application/screens/home_screen.dart';
 import 'package:kkw_application/screens/tabbar_screen.dart';
 import 'package:kkw_application/screens/register_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
@@ -17,12 +16,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final _formKey = GlobalKey<FormState>();
+  
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
-
     return SafeArea(
       child: Scaffold(
         backgroundColor: ListColor.whiteColor,
@@ -143,14 +140,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: Text(
                               'Daftar Sekarang',
-                              style: GoogleFonts.poppins(color: ListColor.primaryColor),
+                              style: GoogleFonts.poppins(color: ListColor.primaryColor, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ],
                       )
                     ],
                   ),
-                ), 
+                ),
               ],
             ),
           ),
