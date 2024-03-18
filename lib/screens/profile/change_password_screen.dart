@@ -33,23 +33,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
               children: [
                 const SizedBox(height: 50),
                 InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () {
-                        //Navigator.pop(context);
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const AccountSettingScreen()));
-                      },
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        child: const Icon(
-                          Icons.arrow_back_ios,
-                          color: ListColor.blackColor,
-                        ),
-                      ),
+                  borderRadius: BorderRadius.circular(10),
+                  onTap: () {
+                    //Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AccountSettingScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      color: ListColor.blackColor,
                     ),
-                    const SizedBox(height: 25),
+                  ),
+                ),
+                const SizedBox(height: 25),
                 Text(
                   'Ubah Password?',
                   style: GoogleFonts.poppins(
@@ -106,7 +106,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const ChangePasswordBerhasilScreen()));
+                                      builder: (context) =>
+                                          const ChangePasswordBerhasilScreen()));
                               print('validated');
                             } else {
                               print('not validated');
@@ -118,9 +119,13 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                             ),
                             backgroundColor: ListColor.primaryColor,
                           ),
-                          child: const Text(
+                          child: Text(
                             'Ubah Password',
-                            style: TextStyle(color: ListColor.secondaryColor),
+                            style: GoogleFonts.poppins(
+                              color: ListColor.secondaryColor,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                       ),
