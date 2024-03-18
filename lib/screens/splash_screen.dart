@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     Future.delayed(const Duration(seconds: 2), () {
       // Navigator.pushReplacementNamed(context, '/login');
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => const ProfileScreen()));
+          .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
     });
   }
 
