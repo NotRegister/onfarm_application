@@ -387,7 +387,7 @@ class CardSptaGagal extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             )),
-                        Text('27/9/23 - 13:00',
+                        Text('-', //? 27/9/23 - 13:00
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -406,7 +406,7 @@ class CardSptaGagal extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             )),
-                        Text('29/9/23 - 12:00',
+                        Text('-',
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
@@ -425,7 +425,7 @@ class CardSptaGagal extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
                             )),
-                        Text('480,71 Kg',
+                        Text('-',
                             style: GoogleFonts.poppins(
                               fontSize: 16,
                               fontWeight: FontWeight.w400,
