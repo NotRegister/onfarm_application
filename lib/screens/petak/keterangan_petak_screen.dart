@@ -28,7 +28,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 35, left: 27, right: 27),
+                padding: const EdgeInsets.symmetric(vertical: 35, horizontal: 27),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
