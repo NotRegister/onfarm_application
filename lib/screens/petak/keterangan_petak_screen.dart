@@ -868,12 +868,18 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                 ),
                               ),
                               const SizedBox(height: 5),
-                              Text(
-                                '100 Lembar',
-                                style: GoogleFonts.poppins(
+                              RichText(
+                                text: TextSpan(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
-                                    color: ListColor.secondaryColor),
+                                    color: ListColor.secondaryColor,
+                                  ),
+                                  children: [
+                                    TextSpan(text: '100 ', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                                    const TextSpan(text: 'Lembar')
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -934,7 +940,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                               ],
                             ),
                             const SizedBox(height: 20),
-                            AspectRatio(aspectRatio: 1.6 ,child: const _BarChartSpta()),
+                            AspectRatio(aspectRatio: 1.6, child: const _BarChartSpta()),
                           ],
                         )),
                     const SizedBox(
@@ -1225,17 +1231,17 @@ class _BarChartSpta extends StatelessWidget {
             int rodIndex,
           ) {
             return BarTooltipItem(
-              '${rod.toY.round()} SPTA',
-              //* judul atas bar
-              GoogleFonts.poppins(
-                color: ListColor.successColor,
-                fontWeight: FontWeight.w700,
-                fontSize: 12
-              )/* TextStyle(
+                '${rod.toY.round()} SPTA',
+                //* judul atas bar
+                GoogleFonts.poppins(
+                    color: ListColor.successColor,
+                    fontWeight: FontWeight.w700,
+                    fontSize:
+                        12) /* TextStyle(
                 color: ListColor.successColor,
                 fontWeight: FontWeight.bold,
               ), */
-            );
+                );
           },
         ),
       );

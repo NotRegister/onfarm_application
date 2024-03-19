@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kkw_application/utils/Colors.dart';
 
 class Indicator extends StatelessWidget {
   const Indicator({
@@ -7,7 +8,7 @@ class Indicator extends StatelessWidget {
     required this.text,
     required this.isSquare,
     this.size = 16,
-    this.textColor,
+    this.textColor = ListColor.secondaryColor,
   });
   final Color color;
   final String text;

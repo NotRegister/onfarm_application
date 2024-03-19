@@ -60,7 +60,7 @@ class _KeteranganSptaScreenState extends State<KeteranganSptaScreen> {
                             ),
                             const Padding(padding: EdgeInsets.only(left: 10)),
                             Text(
-                              'Cari daftar petak',
+                              'Cari daftar nomor spta, pg atau nopol',
                               style: GoogleFonts.poppins(color: ListColor.lightGrayColor),
                             )
                           ],

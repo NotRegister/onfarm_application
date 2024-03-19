@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kkw_application/screens/petak/keterangan_petak_screen.dart';
+import 'package:kkw_application/screens/search_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
 
 class PetakScreen extends StatefulWidget {
@@ -24,22 +25,31 @@ class _PetakScreenState extends State<PetakScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 13),
-                      width: MediaQuery.of(context).size.width,
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10), color: ListColor.whiteColor),
-                      child:  Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          const Icon(
-                            Icons.search,
-                            color: ListColor.primaryColor,
-                          ),
-                          const Padding(padding: EdgeInsets.only(left: 10)),
-                          Text('Cari daftar petak', style: GoogleFonts.poppins(color: ListColor.lightGrayColor),)
-                        ],
+                    InkWell(
+                      onTap: (){
+                        Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SearchScreen()));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 13),
+                        width: MediaQuery.of(context).size.width,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10), color: ListColor.whiteColor),
+                        child:  Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const Icon(
+                              Icons.search,
+                              color: ListColor.primaryColor,
+                            ),
+                            const Padding(padding: EdgeInsets.only(left: 10)),
+                            Text('Cari daftar petak', style: GoogleFonts.poppins(color: ListColor.lightGrayColor),)
+                          ],
+                        ),
                       ),
                     ),
                     const SizedBox(height: 40),
