@@ -26,11 +26,12 @@ class SearchScreen extends StatelessWidget {
                     InkWell(
                       borderRadius: BorderRadius.circular(10),
                       onTap: () {
-                        Navigator.push(
+                        Navigator.pop(context);
+                        /* Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const TabBarScreen()));
+                                            const TabBarScreen())); */
                       },
                       child: Container(
                           padding: const EdgeInsets.all(10),

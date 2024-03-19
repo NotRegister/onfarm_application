@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kkw_application/screens/login_screen.dart';
+import 'package:kkw_application/screens/petak/keterangan_petak_screen.dart';
+import 'package:kkw_application/screens/petak/petak_screen.dart';
 import 'package:kkw_application/screens/profile/profile_screen.dart';
 import 'package:kkw_application/screens/search_screen.dart';
 import 'package:kkw_application/utils/Colors.dart';
