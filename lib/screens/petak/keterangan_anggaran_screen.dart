@@ -30,7 +30,8 @@ class _KeteranganAnggaranScreenState extends State<KeteranganAnggaranScreen> {
                           children: [
                             InkWell(
                               borderRadius: BorderRadius.circular(10),
-                              onTap: () => Navigator.push(
+                              onTap: () => 
+                              Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => const KeteranganPetakScreen())),

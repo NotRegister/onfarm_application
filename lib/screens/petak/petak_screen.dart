@@ -26,20 +26,20 @@ class _PetakScreenState extends State<PetakScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SearchScreen()));
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SearchScreen()));
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 13),
                         width: MediaQuery.of(context).size.width,
                         height: 50,
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10), color: ListColor.whiteColor),
-                        child:  Row(
+                            borderRadius: BorderRadius.circular(10),
+                            color: ListColor.whiteColor),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             const Icon(
@@ -47,7 +47,10 @@ class _PetakScreenState extends State<PetakScreen> {
                               color: ListColor.primaryColor,
                             ),
                             const Padding(padding: EdgeInsets.only(left: 10)),
-                            Text('Cari daftar petak', style: GoogleFonts.poppins(color: ListColor.lightGrayColor),)
+                            Text(
+                              'Cari daftar petak',
+                              style: GoogleFonts.poppins(color: ListColor.lightGrayColor),
+                            )
                           ],
                         ),
                       ),
@@ -65,9 +68,17 @@ class _PetakScreenState extends State<PetakScreen> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         InkWell(
-                          onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => const KeteranganPetakScreen()));},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const KeteranganPetakScreen(),
+                              ),
+                            );
+                          },
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 13),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 21, vertical: 13),
                             width: MediaQuery.of(context).size.width,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
