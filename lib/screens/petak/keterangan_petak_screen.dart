@@ -18,7 +18,8 @@ class KeteranganPetakScreen extends StatefulWidget {
 
 class _ScreenState extends State<KeteranganPetakScreen> {
   int touchedIndex = -1;
-
+  final double _percentBelumTerbayar = 0.10;
+  final double _percentAnggaran = 0.86;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,10 +37,11 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                       children: [
                         InkWell(
                           borderRadius: BorderRadius.circular(10),
-                          onTap: () => Navigator.push(
+                          onTap: () => Navigator.pop(context),
+                          /* Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const TabBarScreen())),
+                                  builder: (context) => const TabBarScreen())), */
                           child: Container(
                               padding: const EdgeInsets.all(8),
                               child: const Icon(Icons.arrow_back_ios_new)),
@@ -343,15 +345,24 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                       ],
                     ),
                     const SizedBox(height: 15),
+                    //! Percent bar anggaran 
                     LinearPercentIndicator(
                       width: MediaQuery.of(context).size.width - 54,
                       animation: true,
                       lineHeight: 28.0,
                       animationDuration: 2000,
-                      percent: 0.86,
-                      center: Text(
-                        "86%",
-                        style: GoogleFonts.poppins(color: ListColor.whiteColor),
+                      percent: _percentAnggaran <= 0.10 ? 0.10 : _percentAnggaran /* 0.20 */,
+                      center: Stack(
+                        alignment: Alignment.centerLeft,
+                        children: [
+                          Positioned(
+                            left: _percentAnggaran <= 0.10 ? 10 : _percentAnggaran * 100 * 2 - 12,
+                            child: Text(
+                              "${(_percentAnggaran * 100).toInt()}%",
+                              style: GoogleFonts.poppins(color: ListColor.whiteColor),
+                            ),
+                          ),
+                        ],
                       ),
                       barRadius: const Radius.circular(12),
                       progressColor: ListColor.errorColor,
@@ -370,39 +381,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Biaya Digunakan',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ListColor.blackColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '17.178.000,00',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: ListColor.errorColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: ListColor.whiteColor),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
                                   'Biaya MBK',
@@ -423,11 +402,220 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                             ),
                           ),
                         ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                color: ListColor.whiteColor),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Biaya Garap',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: ListColor.blackColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '17.178.000,00',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.errorColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(
                       height: 15,
                     ),
+                    Text(
+                      'Belum Terbayar',
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: ListColor.secondaryColor),
+                    ),
+                    const SizedBox(height: 15),
+                    //! Percent bar belum terbayar
+                    LinearPercentIndicator(
+                      width: MediaQuery.of(context).size.width - 54,
+                      animation: true,
+                      lineHeight: 28.0,
+                      animationDuration: 2000,
+                      percent: _percentBelumTerbayar <= 0.10 ? 0.10 : _percentBelumTerbayar /* 0.20 */,
+                      center: Stack(
+                        alignment: Alignment.centerLeft,
+                        children: [
+                          Positioned(
+                            left: _percentBelumTerbayar <= 0.10 ? 10 : _percentBelumTerbayar * 100 * 2 - 12,
+                            child: Text(
+                              "${(_percentBelumTerbayar * 100).toInt()}%",
+                              style: GoogleFonts.poppins(color: ListColor.whiteColor),
+                            ),
+                          ),
+                        ],
+                      ),
+                      barRadius: const Radius.circular(12),
+                      progressColor: ListColor.errorColor,
+                      backgroundColor: ListColor.successColor,
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                color: ListColor.whiteColor),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Biaya Terbayar',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: ListColor.blackColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '15.000.000,00',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.successColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                color: ListColor.whiteColor),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Belum Terbayar',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: ListColor.blackColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '2.178.000,00',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.errorColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      'Biaya Tebang Muat Angkut',
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: ListColor.secondaryColor),
+                    ),
+                    const SizedBox(height: 15),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                color: ListColor.whiteColor),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Biaya Tebang',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: ListColor.blackColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '8.000.000,00',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.errorColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 12,
+                        ),
+                        Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(9),
+                                color: ListColor.whiteColor),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Biaya Angkut',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 16,
+                                      color: ListColor.blackColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                const SizedBox(height: 5),
+                                Text(
+                                  '9.178.000,00',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600,
+                                      color: ListColor.errorColor),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 15),
                     Container(
                       //* Container piechart anggaran
                       padding: const EdgeInsets.all(20),
@@ -518,112 +706,27 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                   text: 'Pengairan ()',
                                   isSquare: false,
                                 ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Indicator(
+                                  color: Color.fromARGB(255, 203, 130, 230),
+                                  text: 'Muat ()',
+                                  isSquare: false,
+                                ),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Indicator(
+                                  color: Color.fromARGB(255, 230, 110, 166),
+                                  text: 'Angkut ()',
+                                  isSquare: false,
+                                ),
                               ],
                             ),
                           ],
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      'Belum Terbayar',
-                      style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: ListColor.secondaryColor),
-                    ),
-                    const SizedBox(height: 15),
-                    LinearPercentIndicator(
-                      width: MediaQuery.of(context).size.width - 54,
-                      animation: true,
-                      lineHeight: 28.0,
-                      animationDuration: 2000,
-                      percent: 0.20,
-                      center: Stack(
-                        alignment: Alignment.centerLeft,
-                        children: [
-                          Positioned(
-                            left: 20,
-                            child: Text(
-                              "20%",
-                              style: GoogleFonts.poppins(color: ListColor.whiteColor),
-                            ),
-                          ),
-                        ],
-                      ),
-                      barRadius: const Radius.circular(12),
-                      progressColor: ListColor.errorColor,
-                      backgroundColor: ListColor.successColor,
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: ListColor.whiteColor),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Belum Terbayar',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ListColor.blackColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '2.178.000,00',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: ListColor.errorColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: ListColor.whiteColor),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Biaya Terbayar',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ListColor.blackColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '15.000.000,00',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: ListColor.successColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                     const Padding(
                       padding: EdgeInsets.only(top: 20, bottom: 10),
@@ -632,81 +735,6 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                         color: ListColor.lightGrayColor,
                       ),
                     ),
-                    Text(
-                      'Biaya Tebang Muat Angkut',
-                      style: GoogleFonts.poppins(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: ListColor.secondaryColor),
-                    ),
-                    const SizedBox(height: 15),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: ListColor.whiteColor),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Biaya Tebang',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ListColor.blackColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '8.000.000,00',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: ListColor.errorColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(9),
-                                color: ListColor.whiteColor),
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 15, vertical: 14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Biaya Angkut',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      color: ListColor.blackColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                const SizedBox(height: 5),
-                                Text(
-                                  '9.178.000,00',
-                                  style: GoogleFonts.poppins(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: ListColor.successColor),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 15),
                     Text(
                       'Produksi',
                       style: GoogleFonts.poppins(
@@ -876,7 +904,10 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                                     color: ListColor.secondaryColor,
                                   ),
                                   children: [
-                                    TextSpan(text: '100 ', style: GoogleFonts.poppins(fontWeight: FontWeight.w600)),
+                                    TextSpan(
+                                        text: '100 ',
+                                        style: GoogleFonts.poppins(
+                                            fontWeight: FontWeight.w600)),
                                     const TextSpan(text: 'Lembar')
                                   ],
                                 ),
@@ -940,7 +971,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
                               ],
                             ),
                             const SizedBox(height: 20),
-                            AspectRatio(aspectRatio: 1.6, child: const _BarChartSpta()),
+                            const AspectRatio(aspectRatio: 1.6, child: _BarChartSpta()),
                           ],
                         )),
                     const SizedBox(
@@ -1043,7 +1074,7 @@ class _ScreenState extends State<KeteranganPetakScreen> {
   }
 
   List<PieChartSectionData> _listPieAnggaran() {
-    return List.generate(7, (i) {
+    return List.generate(9, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 16.0;
       final radius = isTouched ? 75.0 : 70.0;
@@ -1052,8 +1083,8 @@ class _ScreenState extends State<KeteranganPetakScreen> {
         case 0:
           return PieChartSectionData(
             color: const Color.fromARGB(194, 195, 123, 1),
-            title: '40%',
-            value: 40,
+            title: '20%',
+            value: 20,
             radius: radius,
             titleStyle: GoogleFonts.poppins(
               fontSize: fontSize,
@@ -1064,9 +1095,9 @@ class _ScreenState extends State<KeteranganPetakScreen> {
           );
         case 1:
           return PieChartSectionData(
-            color: const Color.fromARGB(186, 165, 221, 1),
-            value: 10,
-            title: '10%',
+            color: const Color.fromARGB(255, 222, 222, 89),
+            title: '20%',
+            value: 20,
             radius: radius,
             titleStyle: GoogleFonts.poppins(
               fontSize: fontSize,
@@ -1088,11 +1119,11 @@ class _ScreenState extends State<KeteranganPetakScreen> {
               shadows: shadows,
             ),
           );
-        case 3:
+          case 3:
           return PieChartSectionData(
-            color: const Color.fromARGB(255, 222, 222, 89),
-            title: '20%',
-            value: 20,
+            color: const Color.fromARGB(186, 165, 221, 1),
+            value: 10,
+            title: '10%',
             radius: radius,
             titleStyle: GoogleFonts.poppins(
               fontSize: fontSize,
@@ -1132,6 +1163,32 @@ class _ScreenState extends State<KeteranganPetakScreen> {
             color: const Color.fromARGB(255, 103, 61, 208),
             title: '5%',
             value: 5,
+            radius: radius,
+            titleStyle: GoogleFonts.poppins(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 7:
+          return PieChartSectionData(
+            color: const Color.fromARGB(255, 203, 130, 230),
+            title: '10%',
+            value: 10,
+            radius: radius,
+            titleStyle: GoogleFonts.poppins(
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              shadows: shadows,
+            ),
+          );
+        case 8:
+          return PieChartSectionData(
+            color: const Color.fromARGB(255, 230, 110, 166),
+            title: '10%',
+            value: 10,
             radius: radius,
             titleStyle: GoogleFonts.poppins(
               fontSize: fontSize,
@@ -1231,17 +1288,13 @@ class _BarChartSpta extends StatelessWidget {
             int rodIndex,
           ) {
             return BarTooltipItem(
-                '${rod.toY.round()} SPTA',
-                //* judul atas bar
-                GoogleFonts.poppins(
-                    color: ListColor.successColor,
-                    fontWeight: FontWeight.w700,
-                    fontSize:
-                        12) /* TextStyle(
-                color: ListColor.successColor,
-                fontWeight: FontWeight.bold,
-              ), */
-                );
+              '${rod.toY.round()} SPTA',
+              //* judul atas bar
+              GoogleFonts.poppins(
+                  color: ListColor.secondaryColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 12),
+            );
           },
         ),
       );
@@ -1249,7 +1302,7 @@ class _BarChartSpta extends StatelessWidget {
   Widget getTitles(double value, TitleMeta meta) {
     //* tanggal bar bawah
     const style = TextStyle(
-      color: ListColor.primaryColor,
+      color: ListColor.secondaryColor,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -1320,7 +1373,7 @@ class _BarChartSpta extends StatelessWidget {
   LinearGradient get _barsGradient => const LinearGradient(
         colors: [
           ListColor.primaryColor,
-          ListColor.successColor,
+          ListColor.primaryColor,
         ],
         begin: Alignment.bottomCenter,
         end: Alignment.topCenter,
